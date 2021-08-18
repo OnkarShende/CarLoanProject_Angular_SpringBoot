@@ -1,0 +1,439 @@
+<p>sianction-dashboard works!</p>
+
+<div *ngIf="table1"> 
+    <h1>Dashboard</h1>
+      <table class="table table-hover table-dark" >
+        <thead>
+          <tr>
+            <th scope="col">Customer Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email Id</th>
+            <th scope="col">Mobile Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of customerlist" class="bg-secondary">
+               <td> {{c.cid}}</td>
+                <td> {{c.cname}}</td>
+                <td> {{c.cemail}}</td>  
+                <td> {{c.cmobileno}}</td>               
+               <td>
+                  <a class="btn" (click)="verify(c.cid)"><i aria-hidden="true"> {{c.verifystatus}}   </i></a>
+              </td>
+              <td>
+                <a class="btn" (click)="sanction(c.cid)"><i aria-hidden="true"> {{sanctionstatus}}   </i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div> 
+  
+  <!-- ------------------------------------------------------------------------------------------------------ -->
+  
+  <div *ngIf="table2" > 
+    <div >
+      <h3>{{customerobject?.cname}} Details</h3>
+    <table  class="table table-bordered" style="border-color:black;" >
+      <thead>
+       
+      </thead>
+      <tbody  >
+      
+        <tr  class="bg-secondary">
+             <td>Customer Id</td>
+             <td> {{customerobject?.cid}}</td>
+            </tr>
+       <tr  class="bg-secondary">
+             <td >Name</td>
+             <td> {{customerobject?.cname}}</td>
+        </tr>
+        <tr  class="bg-secondary">
+          <td>Mobile No</td>
+          <td> {{customerobject?.cmobileno}}</td>
+     </tr>
+     <tr  class="bg-secondary">
+      <td>Annual Imcome</td>
+      <td> {{customerobject?.annualincome}}</td>
+  </tr>
+  <tr  class="bg-secondary">
+    <td>Email</td>
+    <td> {{customerobject?.cemail}}</td>
+  </tr>
+  <tr  class="bg-secondary">
+    <td>Dependant Member</td>
+    <td> {{customerobject?.cdependentmember}}</td>
+  </tr>
+  <tr  class="bg-secondary">
+    <td>Downpayment</td>
+    <td> {{customerobject?.downpayment}}</td>
+  </tr>
+  <tr  class="bg-secondary">
+    <td>LocalAddress</td>
+    <td> {{customerobject?.localaddress}}</td>
+  </tr>
+  <tr  class="bg-secondary">
+    <td>PermanentAddress</td>
+    <td> {{customerobject?.permanentaddress}}</td>
+  </tr>
+  <tr  class="bg-secondary">
+    <td>Required Loan Amount</td>
+    <td> {{customerobject?.requiredamount}}</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  
+  <!-- //------------------------------------------------------------------------------------- -->
+  <div>
+  <h3>Previous Loan Details</h3>
+  <table class="table table-hover table-dark" >
+    
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Remaining Loan Amount</th>
+        <th scope="col">Pending</th>
+        <th scope="col">Bank Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of customerobject?.previousloans" class="bg-secondary">
+           <td> {{p?.loantype}}</td>
+            <td> {{p?.loanamount}}</td>
+            <td> {{p?.remainingloan}}</td>  
+            <td> {{p?.tenurepending}}</td> 
+            <td> {{p?.previousloanbank}}</td>
+        </tr>
+    </tbody>
+  </table>
+  </div>
+  
+  
+  
+  <div>
+    <h3>Gurantors Details</h3>
+    <table class="table table-hover table-dark" >
+      
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">MobileNo</th>
+          <th scope="col">AdharNo</th>
+          <th scope="col">Occupation</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let g of customerobject?.guarantors" class="bg-secondary">
+             <td> {{g?.name}}</td>
+              <td> {{g?.mobileno}}</td>
+              <td> {{g?.adharno}}</td>  
+              <td> {{g?.occupation}}</td> 
+              
+          </tr>
+      </tbody>
+    </table>
+    </div>
+  
+  
+  
+    <div>
+      <h3>Vehicle Details</h3>
+      <table class="table table-hover table-dark" >
+        
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Model</th>
+            <th scope="col">Colour</th>
+            <th scope="col">Price</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-secondary">
+               <td> {{customerobject?.vehicledetails?.companyname}}</td>
+                <td> {{customerobject?.vehicledetails?.modelname}}</td>
+                <td> {{customerobject?.vehicledetails?.colour}}</td>  
+                <td> {{customerobject?.vehicledetails?.onroadprice}}</td> 
+            </tr>
+        </tbody>
+      </table>
+      </div>
+  
+      
+    <div>
+      <h3>Dealer Details</h3>
+      <table class="table table-hover table-dark" >
+        
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">AccountNo</th>
+            <th scope="col">MobileNo</th>
+            <th scope="col">Email</th>
+            <th scope="col">Bank Name</th>
+            <th scope="col">Status</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-secondary">
+               <td> {{customerobject?.dealerdetails?.dealername}}</td>
+                <td> {{customerobject?.dealerdetails?.dealeraccountno}}</td>
+                <td> {{customerobject?.dealerdetails?.dealermobileno}}</td>  
+                <td> {{customerobject?.dealerdetails?.email}}</td> 
+                <td> {{customerobject?.dealerdetails?.dealerbank}}</td> 
+                <td> {{customerobject?.dealerdetails?.status}}</td> 
+            </tr>
+        </tbody>
+      </table>
+      </div>
+  
+        <a class="btn" (click)="showdoc(customerobject?.cid)">Show Document<i  aria-hidden="true"></i></a>
+    
+        <div *ngIf=documentobject  >
+        <table class="table table-bordered" style="border-color:rgb(168, 100, 100);">
+          <tr >
+            <td>
+            pancard
+          </td>
+  
+          <td>
+            <img [src]="'data:image/jpeg;base64,'+documentobject.pancard">
+          </td>
+          </tr>
+  
+          <tr >
+            <td>
+            Adhar Card
+          </td>
+  
+          <td>
+            <img [src]="'data:image/jpeg;base64,'+documentobject.adharcard">
+          </td>
+          </tr>
+  
+          <tr >
+            <td>
+            Income Proof
+          </td>
+  
+          <td>
+            <img [src]="'data:image/jpeg;base64,'+documentobject.incomeproof">
+          </td>
+          </tr>
+  
+          <tr >
+            <td>
+            Signature
+          </td>
+  
+          <td>
+            <img [src]="'data:image/jpeg;base64,'+documentobject.signature">
+          </td>
+          </tr>
+  
+          <tr >
+            <td>
+            Address Proof
+          </td>
+  
+          <td>
+            <img [src]="'data:image/jpeg;base64,'+documentobject.addressproof">
+          </td>
+          </tr>
+  
+          <tr >
+            <td>
+            Vehicle Quatation
+          </td>
+  
+          <td>
+            <img [src]="'data:image/jpeg;base64,'+documentobject.vehiclequatation">
+          </td>
+          </tr>
+  
+          <tr >
+            <td>
+            Photo
+          </td>
+  
+          <td>
+            <img [src]="'data:image/jpeg;base64,'+documentobject.photo">
+          </td>
+          </tr>
+  
+          <tr >
+            <td>
+            Itr File
+          </td>
+  
+          <td>
+            <img [src]="'data:image/jpeg;base64,'+documentobject.itrfile">
+          </td>
+          </tr>
+        
+        
+      </table>
+      <a class="btn" (click)="verified(customerobject?.cid)">CompleteVerification<i  aria-hidden="true"></i></a>
+    </div>
+  
+      </div>
+
+      
+<!-- //------------------------------------------------------------------------------------------------------------- -->
+
+
+<div *ngIf="table3" > 
+    <div >
+      <h3>{{loandetailsobject?.cname}} Details</h3>
+    <table  class="table table-bordered" style="border-color:black;" >
+      <thead>
+       
+      </thead>
+      <tbody  >
+      
+        <tr  class="bg-secondary">
+             <td>Loan Code</td>
+             <td> {{loandetailsobject?.lcode}}</td>
+            </tr>
+       <tr  class="bg-secondary">
+             <td>Customer Id</td>
+             <td> {{loandetailsobject?.cid}}</td>
+        </tr>
+        <tr  class="bg-secondary">
+          <td>Loan Amount</td>
+          <td> {{loandetailsobject?.loanAmount}}</td>
+     </tr>
+     <tr  class="bg-secondary">
+      <td>Rate Of Interest</td>
+      <td> {{loandetailsobject?.roi}} %</td>
+  </tr>
+  <tr  class="bg-secondary">
+    <td>Tenure</td>
+    <td> {{loandetailsobject?.tenure}} Months</td>
+  </tr>
+  <tr  class="bg-secondary">
+    <td>DownPayment</td>
+    <td> {{loandetailsobject?.downPayment}}</td>
+  </tr>
+  <tr  class="bg-secondary">
+    <td>Processing Fee</td>
+    <td> {{loandetailsobject?.processingFee}}</td>
+  </tr>
+  <tr  class="bg-secondary">
+    <td>Annual Income</td>
+    <td> {{loandetailsobject?.annualIncome}}</td>
+  </tr>
+  <tr  class="bg-secondary">
+    <td>Total Interest</td>
+    <td> {{loandetailsobject?.totalInterest}}</td>
+  </tr>
+  <tr  class="bg-secondary">
+    <td>EMI in Months</td>
+    <td> {{loandetailsobject?.emi}}</td>
+  </tr>
+  </tbody>
+  </table>
+
+    <a class="btn" (click)="sanctionletter(loandetailsobject?.cid)"><i aria-hidden="true"> Proceed to Sanction Letter  </i></a>
+
+  </div>
+
+  </div>
+
+  <!-- //---------------------------------------------------------------------------------------------------------------------------------- -->
+
+  <div *ngIf="table4" > 
+
+    <div id="mypdf"  class="border border-dark" >
+      <h3 class="center" >Final Sanction Letter</h3>
+        <div>
+  <pre>
+     <b> Name: {{loandetailsobject?.cname}} </b><br>
+     <b> Address: {{loandetailsobject?.caddress}} </b><br>
+     <b> Contact No: {{loandetailsobject?.cmobileno}} </b><br>
+     <b> Email ID: {{loandetailsobject?.cemailid}} </b><br>
+     <b> Date :</b> {{todaydate|date}}
+   </pre>   
+
+
+
+        <pre>
+            <p style="font-size: large;">
+                Hi Dear {{loandetailsobject?.cname|uppercase}} ,
+                We thank you for choosing us. We are pleased to inform that we have in principal
+                approved loan to you as per Terms & Conditions mentioned below.
+            </p>
+        </pre>
+
+        <div >
+            <h4>Loan Details</h4>
+          <table  class="table table-bordered" style="border-color:black;" >
+            <thead>
+             
+            </thead>
+            <tbody  >
+            
+              <tr  >
+                   <td>Loan Code</td>
+                   <td> {{loandetailsobject?.lcode}}</td>
+                  </tr>
+             <tr  >
+                   <td>Customer Id</td>
+                   <td> {{loandetailsobject?.cid}}</td>
+              </tr>
+              <tr  >
+                <td>Loan Amount</td>
+                <td> {{loandetailsobject?.loanAmount}}</td>
+           </tr>
+           <tr  >
+            <td>Rate Of In0terest</td>
+            <td> {{loandetailsobject?.roi}} %</td>
+        </tr>
+        <tr  >
+          <td>Tenure</td>
+          <td> {{loandetailsobject?.tenure}} Months</td>
+        </tr>
+        <tr  >
+          <td>DownPayment</td>
+          <td> {{loandetailsobject?.downPayment}}</td>
+        </tr>
+        <tr  >
+          <td>Processing Fee</td>
+          <td> {{loandetailsobject?.processingFee}}</td>
+        </tr>
+        <tr  >
+          <td>Annual Income</td>
+          <td> {{loandetailsobject?.annualIncome}}</td>
+        </tr>
+        <tr  >
+          <td>Total Interest</td>
+          <td> {{loandetailsobject?.totalInterest}}</td>
+        </tr>
+        <tr  >
+          <td>EMI in Months</td>
+          <td> {{loandetailsobject?.emi}}</td>
+        </tr>
+        </tbody>
+    </table>
+      
+        </div>
+      
+        <pre>
+            <p style="font-size: large;">
+        Thanks & Regards
+            </p>
+        </pre>
+
+    </div>
+       
+  </div>
+
+  <div>
+    <a class="btn" (click)="generatepdf('mypdf')"><i aria-hidden="true"> Generate PDF </i></a>  
+    </div>
+
+  </div>

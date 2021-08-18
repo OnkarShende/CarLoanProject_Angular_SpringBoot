@@ -1,0 +1,346 @@
+<p>adduser works!</p>
+
+<section class="h-100 h-custom" style="background-color: #8fc4b7;"  *ngIf="form1" > 
+    <div class="container py-5 h-100"  >
+      <div class="row d-flex justify-content-center align-items-center h-100"  >
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3"  >
+            <img src="assets/img/car2.jpg" class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;" alt="Sample photo">
+            <div class="card-body p-4 p-md-5">
+              <h1 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Customer Details</h1>
+
+              <form class="px-md-2" [formGroup]="myform1" (ngSubmit)="savedata()" >
+                
+                <h3>Personal Info</h3>  
+                <div class="form-outline mb-4" [hidden]="true" >
+                    <label class="form-label" for="form3Example1q">Customer Id </label>
+                    <small style="color: red;" > *</small>
+                  <input formControlName="cid"  type="number" class="form-control"/>
+                </div>
+
+             <div class="form-outline mb-4">
+              <label class="form-label" for="form3Example1q">Customer Name</label>
+              <small style="color: red;" > *</small>
+              <input formControlName="cname"  type="text" class="form-control"/>
+              </div>
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example1q">Email Id</label>
+                <small style="color: red;" > *</small>
+              <input formControlName="cemail" type="email" class="form-control" />             
+            </div>
+
+            <div class="row" >
+                <div class="form-outline col-md-10 mb-4">
+                    <label class="form-label" for="form3Example1q">Mobile No</label>
+                    <small style="color: red;" > *</small>
+                  <input formControlName="cmobileno" type="number" class="form-control" />             
+                </div>
+                
+                <div class="form-outline col-md-10 mb-4">
+                    <label class="form-label" for="form3Example1q">Annual Income</label>
+                    <small style="color: red;" > *</small>
+                  <input formControlName="annualincome" type="number" class="form-control" />             
+                </div>
+                </div>
+               
+                <div class="row" >
+                <div class="form-outline col-md-10 mb-4">
+                    <label class="form-label" for="form3Example1q">No. of Depedants</label>
+                    <small style="color: red;" > *</small>
+                  <input formControlName="cdependentmember" type="number" class="form-control"/>   
+                </div>
+
+                  <div class="form-outline col-md-10 mb-4">  
+                    <div class="form-outline datepicker">
+                        <label for="exampleDatepicker1" class="form-label">DownPayment</label>
+                        <small style="color: red;" > *</small>
+                      <input formControlName="downpayment" type="number" class="form-control"/>
+                    </div>
+                  </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-outline col-md-10 mb-4">
+                        <label class="form-label" for="form3Example1q">Required Amount</label>
+                        <small style="color: red;" > *</small>
+                      <input formControlName="requiredamount" type="number" class="form-control"/>        
+                    </div>
+    
+                    <div class="form-outline col-md-10 mb-4">
+                        <label class="form-label" for="form3Example1q" >Tenure</label>
+                        <small style="color: red;" > *</small>
+                      <input formControlName="tenure" type="number" class="form-control"/>           
+                    </div>
+                    </div>      
+
+                  <div class="form-outline mb-4">
+                    <label for="exampleDatepicker1" class="form-label">Local Address </label>
+                    <small style="color: red;" > *</small> <br>
+                    <textarea formControlName="localaddress" type="text" cols="57" rows="2" class="form-control" ></textarea>
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <label for="exampleDatepicker1" class="form-label">Permanant Address </label>
+                    <small style="color: red;" > *</small>
+                    <textarea formControlName="permanentaddress" type="text" cols="57" rows="2" class="form-control" ></textarea>
+                  </div>
+
+                  <h3>Vehicle Details</h3>
+                    <div formGroupName="vehicledetails" class="form-outline mb-4" >
+
+                      <div class="form-outline mb-4" [hidden]="true" >
+                        <label class="form-label" for="form3Example1q">Vehicle Id</label>
+                        <small style="color: red;" > *</small>
+                      <input formControlName="vid"  type="number" class="form-control"/>
+                    </div>
+                      <div class="row" >
+                    <div class="form-outline col-md-10 mb-4">
+                      <label class="form-label" for="form3Example1q">Vehicle Company</label>
+                      <small style="color: red;" > *</small>
+                    <input formControlName="companyname"  type="text" class="form-control"/>
+                  </div>
+
+                  <div class="form-outline col-md-10 mb-4">
+                    <label class="form-label" for="form3Example1q">Vehicle Model</label>
+                    <small style="color: red;" > *</small>
+                  <input formControlName="modelname"  type="text" class="form-control"/>
+                </div>
+                </div>
+
+                <div class="row" >
+                  <div class="form-outline col-md-10 mb-4">
+                    <label class="form-label" for="form3Example1q">Vehicle Colour</label>
+                    <small style="color: red;" > *</small>
+                  <input formControlName="colour"  type="text" class="form-control"/>
+                </div>
+
+                <div class="form-outline col-md-10 mb-4">
+                  <label class="form-label" for="form3Example1q">Onroad Price</label>
+                  <small style="color: red;" > *</small>
+                <input formControlName="onroadprice"  type="number" class="form-control"/>
+              </div>
+              </div>
+                  </div>  
+                  <h3>Dealer Details</h3>
+               
+                  <div formGroupName="dealerdetails" class="form-outline mb-4" >
+
+                    <div class="form-outline mb-4" [hidden]="true" >
+                      <label class="form-label" for="form3Example1q">Dealer Id</label>
+                      <small style="color: red;" > *</small>
+                    <input formControlName="did"  type="number" class="form-control"/>
+                  </div>
+                    <div class="row" >
+                  <div class="form-outline col-md-10 mb-4">
+                    <label class="form-label" for="form3Example1q">Dealer Name</label>
+                    <small style="color: red;" > *</small>
+                  <input formControlName="dealername"  type="text" class="form-control"/>
+                </div>
+
+                <div class="form-outline col-md-10 mb-4">
+                  <label class="form-label" for="form3Example1q">Dealer Account No</label>
+                  <small style="color: red;" > *</small>
+                <input formControlName="dealeraccountno"  type="number" class="form-control"/>
+              </div>
+              </div>
+
+              <div class="row" >
+                <div class="form-outline col-md-10 mb-4">
+                  <label class="form-label" for="form3Example1q">Dealer Mobile No</label>
+                  <small style="color: red;" > *</small>
+                <input formControlName="dealermobileno"  type="number" class="form-control"/>
+              </div>
+
+              <div class="form-outline col-md-10 mb-4">
+                <label class="form-label" for="form3Example1q">Dealer Emailid</label>
+                <small style="color: red;" > *</small>
+              <input formControlName="email"  type="text" class="form-control"/>
+            </div>
+            </div>
+
+            <div class="row" >
+              <div class="form-outline col-md-10 mb-4">
+                <label class="form-label" for="form3Example1q">Dealer Bank</label>
+                <small style="color: red;" > *</small>
+              <input formControlName="dealerbank"  type="text" class="form-control"/>
+            </div>
+
+            <div class="form-outline col-md-10 mb-4">
+              <label class="form-label" for="form3Example1q">Dealer Status</label>
+              <small style="color: red;" > *</small>
+            <input formControlName="status"  type="text" class="form-control"/>
+          </div>
+          </div>
+          </div>
+
+          <h3>Previous Loan Deatils</h3>
+
+  <div formArrayName="previousloans" class="form-outline mb-4" >
+
+    <div class="col-sm-10" *ngFor=" let group of loanArray.controls; let i=index;" [formGroupName]='i'>
+    
+  <div class="form-outline col-md-10 mb-4" >
+    <label class="form-label" for="form3Example1q">Loan Id</label>
+    <small style="color: red;" > *</small>
+  <input formControlName="pid"  type="number" readonly="readonly" class="form-control"/>
+  </div>
+  
+  <div class="form-outline col-md-10 mb-4">
+  <label class="form-label" for="form3Example1q">Loan Type</label>
+  <small style="color: red;" > *</small>
+  <input formControlName="loantype"  type="text" class="form-control"/>
+  </div>
+  
+  <div class="form-outline col-md-10 mb-4">
+  <label class="form-label" for="form3Example1q">Loan Amount</label>
+  <small style="color: red;" > *</small>
+  <input formControlName="loanamount"  type="number" class="form-control"/>
+  </div>
+  
+  <div class="form-outline col-md-10 mb-4">
+  <label class="form-label" for="form3Example1q">Remaining Laon</label>
+  <small style="color: red;" > *</small>
+  <input formControlName="remainingloan"  type="number" class="form-control"/>
+  </div>
+  
+  <div class="form-outline col-md-10 mb-4">
+  <label class="form-label" for="form3Example1q">Remaining Tenure</label>
+  <small style="color: red;" > *</small>
+  <input formControlName="tenurepending"  type="number" class="form-control"/>
+  </div>
+  
+  <div class="form-outline col-md-10 mb-4">
+  <label class="form-label" for="form3Example1q">Bank Name</label>
+  <small style="color: red;" > *</small>
+  <input formControlName="previousloanbank"  type="text" class="form-control"/>
+  </div>
+
+  <button type="button"(click)="addloan()" class="btn btn-success  btn-sm btn-add-phone"><span class="glyphicon glyphicon-plus"></span> Add</button>&nbsp;
+  <button type="button"(click)="removeloan(i)" class="btn btn-success btn-sm btn-add-phone"><span class="glyphicon glyphicon-plus"></span>Remove</button>
+
+  </div>
+
+  </div>
+
+<h3>Guaranter Deatils</h3>
+        
+<div formArrayName="guarantors" class="form-outline mb-4" >
+
+  <div class="col-sm-10" *ngFor=" let group of gurandorArray.controls; let i=index;" [formGroupName]='i'>
+
+<div class="form-outline col-md-10 mb-4" >
+  <label class="form-label" for="form3Example1q">Guaranter Id </label>
+  <small style="color: red;" > *</small>
+<input formControlName="guarantorid"  type="number" readonly="readonly" class="form-control"/>
+</div>
+
+<div class="form-outline col-md-10 mb-4">
+<label class="form-label" for="form3Example1q">Name</label>
+<small style="color: red;" > *</small>
+<input formControlName="name"  type="text" class="form-control"/>
+</div>
+
+<div class="form-outline col-md-10 mb-4">
+<label class="form-label" for="form3Example1q">Mobile No</label>
+<small style="color: red;" > *</small>
+<input formControlName="mobileno"  type="number" class="form-control"/>
+</div>
+
+<div class="form-outline col-md-10 mb-4">
+<label class="form-label" for="form3Example1q">Aadhar No</label>
+<small style="color: red;" > *</small>
+<input formControlName="adharno"  type="number" class="form-control"/>
+</div>
+
+<div class="form-outline col-md-10 mb-4">
+<label class="form-label" for="form3Example1q">Occupation</label>
+<small style="color: red;" > *</small>
+<input formControlName="occupation"  type="text" class="form-control"/>
+</div>
+
+<button type="button"(click)="addgurandor()" class="btn btn-success  btn-sm btn-add-phone"><span class="glyphicon glyphicon-plus"></span> Add</button>&nbsp;
+  <button type="button"(click)="removegurandor(i)" class="btn btn-success btn-sm btn-add-phone"><span class="glyphicon glyphicon-plus"></span>Remove</button>
+
+</div>
+
+</div>
+
+  <div class="row">
+       <div class="col-md-6">
+          <button type="submit" class="btn btn-success btn-lg mb-1"  >
+          Next 
+          <!-- [disabled]="!myform.valid" -->
+       </button>
+      </div>
+    <div class="col-md-5" >
+       <input type="reset" class="btn btn-warning btn-lg mb-1"  value="Reset">
+    </div>
+    </div>
+    </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-100 h-custom" style="background-color: #8fc4b7;" *ngIf="form2" >
+    <div class="container py-5 h-100"  >
+      <div class="row d-flex justify-content-center align-items-center h-100"  >
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3"  >
+            <img src="assets/img/car1.jpg" class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;" alt="Sample photo">
+            <div class="card-body p-4 p-md-5">
+
+<form (ngSubmit)="savedocs()">
+ 
+ <!-- <div class="form-outline col-md-10 mb-4" >
+   Document Id  <input readonly="readonly" [(ngModel)]="mydoc.did" [ngModelOptions]="{standalone: true}">
+    </div>
+   
+    <div class="form-outline col-md-10 mb-4" >
+   Customer Id  <input readonly="readonly" [(ngModel)]="mydoc.cid" [ngModelOptions]="{standalone: true}">
+    </div> -->
+    <div class="form-outline col-md-10 mb-4">
+    Email Id &nbsp;&nbsp;&nbsp;
+     <input type="text" [(ngModel)]="mydoc.cemail" [ngModelOptions]="{standalone: true}">
+   </div>
+   <div class="form-outline col-md-10 mb-4">
+  Pan card   <input id="first-name" type="file" (change)=" onSelectedpancard($event)"   > 
+   </div>
+   <div class="form-outline col-md-10 mb-4">
+  Aadhar card <input id="last-name" type="file" (change)="onSelectedaadharcard($event)" >
+  </div>
+  <div class="form-outline col-md-10 mb-4">
+  Income Proof <input id="last-name" type="file" (change)="onSelectedincomeproof($event)"  > 
+   </div>
+    <div class="form-outline col-md-10 mb-4">
+  Signature <input id="last-name" type="file" (change)="onSelectedsignature($event)" > <br>
+</div>
+<div class="form-outline col-md-10 mb-4">
+  Address Proof    <input id="last-name" type="file" (change)="onSelectedaddressproof($event)" > <br>
+     </div>
+     <div class="form-outline col-md-10 mb-4">
+  Vehicle Quatation    <input id="last-name" type="file" (change)="onSelectedvehiclequatation($event)" > <br>
+</div>
+<div class="form-outline col-md-10 mb-4">
+  Photo  <input id="last-name" type="file" (change)="onSelectedphoto($event)" > <br>
+  </div>
+  <div class="form-outline col-md-10 mb-4">
+  ITR file    <input id="last-name" type="file" (change)="onSelecteditrfile($event)" > <br>
+</div>
+   <div class="form-outline col-md-10 mb-4">
+    <button type="submit" class="btn btn-success btn-lg mb-1"  >
+      Submit
+   </button>
+   </div>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+  </section>
+  
